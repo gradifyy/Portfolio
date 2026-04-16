@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8e1d5"/>
+      <stop offset="100%" stop-color="#c4a484" stop-opacity="0.6"/>
+    </linearGradient>
+    <radialGradient id="r4" cx="0.5" cy="0.15" r="0.7">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g4)"/>
+  <rect width="1200" height="900" fill="url(#r4)"/>
+  <g font-family="Georgia, serif" fill="#2a2a2a">
+    <text x="100" y="280" font-size="92" opacity="0.92">North</text>
+    <text x="100" y="380" font-size="92" opacity="0.92">Current.</text>
+    <text x="100" y="450" font-size="18" opacity="0.55" letter-spacing="6">VOLUME · IV / WINTER</text>
+  </g>
+  <g opacity="0.35" stroke="#2a2a2a" fill="none" stroke-width="1">
+    <line x1="100" y1="500" x2="1100" y2="500"/>
+    <line x1="100" y1="520" x2="1100" y2="520"/>
+  </g>
+  <g font-family="Georgia, serif" fill="#2a2a2a" opacity="0.55">
+    <text x="100" y="580" font-size="20" font-style="italic">On weather, attention, and the editorial in software.</text>
+    <text x="100" y="620" font-size="14" letter-spacing="3">ESSAY · A. AYRO</text>
+  </g>
+  <g opacity="0.6">
+    <rect x="740" y="560" width="360" height="260" fill="#f9f7f2" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="770" y="600" width="160" height="10" fill="#2a2a2a" opacity="0.4"/>
+    <rect x="770" y="620" width="220" height="6" fill="#2a2a2a" opacity="0.2"/>
+    <rect x="770" y="640" width="200" height="6" fill="#2a2a2a" opacity="0.15"/>
+    <rect x="770" y="680" width="300" height="90" fill="#c4a484" opacity="0.55"/>
+  </g>
+</svg>
