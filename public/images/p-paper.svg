@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f9f7f2"/>
+      <stop offset="100%" stop-color="#e8d9c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g5)"/>
+  <g opacity="0.85">
+    <rect x="140" y="140" width="300" height="420" fill="#fff" stroke="#2a2a2a" stroke-width="0.8"/>
+    <rect x="170" y="180" width="240" height="300" fill="#e8e1d5"/>
+    <text x="170" y="520" font-family="Georgia, serif" font-size="18" fill="#2a2a2a" opacity="0.7">Linen notebook</text>
+    <text x="170" y="545" font-family="Georgia, serif" font-size="14" fill="#c4a484">£38</text>
+
+    <rect x="480" y="220" width="300" height="420" fill="#fff" stroke="#2a2a2a" stroke-width="0.8"/>
+    <circle cx="630" cy="400" r="110" fill="#d4a5a5" opacity="0.55"/>
+    <text x="510" y="600" font-family="Georgia, serif" font-size="18" fill="#2a2a2a" opacity="0.7">Brass bookmark</text>
+    <text x="510" y="625" font-family="Georgia, serif" font-size="14" fill="#c4a484">£14</text>
+
+    <rect x="820" y="160" width="260" height="460" fill="#fff" stroke="#2a2a2a" stroke-width="0.8"/>
+    <rect x="850" y="200" width="200" height="320" fill="#c4a484" opacity="0.6"/>
+    <text x="850" y="560" font-family="Georgia, serif" font-size="18" fill="#2a2a2a" opacity="0.7">Letterpress set</text>
+    <text x="850" y="585" font-family="Georgia, serif" font-size="14" fill="#c4a484">£72</text>
+  </g>
+  <g font-family="Georgia, serif" fill="#2a2a2a" opacity="0.5">
+    <text x="140" y="740" font-size="28" font-style="italic">A catalog as collection.</text>
+    <text x="140" y="780" font-size="13" letter-spacing="4">PAPER GARDEN · SS · 2023</text>
+  </g>
+</svg>
