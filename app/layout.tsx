@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/nav";
 import LenisProvider from "@/components/lenis-provider";
@@ -7,28 +7,28 @@ import RevealObserver from "@/components/reveal-observer";
 import PageTransition from "@/components/page-transition";
 import Footer from "@/components/footer";
 
-const serif = DM_Serif_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
 const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const display = Manrope({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ayro — Digital Experiences Shaped by Intention",
+  title: "Ayro — Premium Digital Experiences From AI-Powered Design",
   description:
-    "Ayro is an app developer and designer crafting strategy-led digital experiences for forward-thinking brands.",
+    "Ayro crafts strategic apps and digital experiences using Cursor, Figma, Claude & OpenAI. Visionary app developer and designer.",
   openGraph: {
-    title: "Ayro — Digital Experiences Shaped by Intention",
+    title: "Ayro — Premium Digital Experiences From AI-Powered Design",
     description:
-      "Strategy-led development for forward-thinking brands.",
+      "Ayro crafts strategic apps and digital experiences using Cursor, Figma, Claude & OpenAI.",
     type: "website",
   },
 };
@@ -41,9 +41,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable} antialiased`}
+      className={`${sans.variable} ${display.variable} antialiased`}
     >
-      <body className="min-h-screen bg-cream text-charcoal">
+      <body className="min-h-screen bg-cream text-ink">
         <LenisProvider>
           <RevealObserver />
           <Nav />
