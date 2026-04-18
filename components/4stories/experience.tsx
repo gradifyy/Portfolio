@@ -105,6 +105,7 @@ export default function FsExperience() {
                     />
                     {/* Floor number overlay */}
                     <span
+                      aria-hidden="true"
                       className="absolute bottom-5 left-6 font-serif text-7xl md:text-8xl opacity-20"
                       style={{ color: "var(--fs-cream)" }}
                     >

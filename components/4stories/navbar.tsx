@@ -66,7 +66,7 @@ export default function FsNavbar() {
             ))}
             <button
               onClick={() => scrollTo("#visit")}
-              className="fs-btn !py-2.5 !px-5 !text-[10px]"
+              className="fs-btn py-2.5! px-5! text-[10px]!"
             >
               Reserve
             </button>

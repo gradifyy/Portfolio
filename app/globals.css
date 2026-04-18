@@ -53,7 +53,7 @@ body {
 }
 
 .font-sans {
-  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
 }
 
 /* Lenis smooth scroll */
@@ -162,7 +162,7 @@ html.lenis body {
 body.page-4stories {
   background: #0c0b09 !important;
   color: #f0ece4 !important;
-  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
 }
 
 body.page-4stories > header,
@@ -282,7 +282,7 @@ body.page-4stories ::selection {
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
   background: transparent;
   cursor: pointer;
   transition:

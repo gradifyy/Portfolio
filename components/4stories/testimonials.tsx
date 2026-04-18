@@ -34,6 +34,11 @@ export default function FsTestimonials() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
     intervalRef.current = setInterval(() => {
       setActive((prev) => (prev + 1) % REVIEWS.length);
     }, 6000);

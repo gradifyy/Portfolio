@@ -41,9 +41,8 @@ export default function FsStory() {
           <div className="md:col-span-6 md:col-start-7 flex flex-col justify-end">
             <p
               className="text-[1.05rem] leading-[1.75] mb-8"
-              style={{ color: "var(--fs-muted)" }}
+              style={{ color: "var(--fs-muted)", ["--fs-delay" as string]: "80ms" }}
               data-fs-reveal
-              data-fs-delay="80"
             >
               Nestled in the heart of Thamel, 4Stories is more than a
               restaurant — it is a vertical journey through mood, flavor, and
@@ -53,9 +52,8 @@ export default function FsStory() {
             </p>
             <p
               className="text-[1.05rem] leading-[1.75]"
-              style={{ color: "var(--fs-muted)" }}
+              style={{ color: "var(--fs-muted)", ["--fs-delay" as string]: "160ms" }}
               data-fs-reveal
-              data-fs-delay="160"
             >
               We blend modern elegance with rustic Nepali charm, sourcing fresh
               local ingredients and crafting every dish with intention. Whether

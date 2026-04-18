@@ -41,11 +41,18 @@ export default function FsFooter() {
                 (item) => (
                   <li key={item}>
                     <button
-                      onClick={() =>
-                        document
-                          .querySelector(`#${item.toLowerCase()}`)
-                          ?.scrollIntoView({ behavior: "smooth" })
-                      }
+                      onClick={() => {
+                        const target = document.querySelector(
+                          `#${item.toLowerCase()}`
+                        );
+                        if (!target) return;
+                        const reduceMotion = window.matchMedia(
+                          "(prefers-reduced-motion: reduce)"
+                        ).matches;
+                        target.scrollIntoView({
+                          behavior: reduceMotion ? "auto" : "smooth",
+                        });
+                      }}
                       className="text-sm transition-colors duration-300 hover:text-[var(--fs-gold)]"
                       style={{ color: "var(--fs-muted)" }}
                     >
