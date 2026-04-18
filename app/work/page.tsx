@@ -1,53 +1,61 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ProjectCard from "@/components/project-card";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Work — Ayro",
   description:
-    "Selected work by Ayro — editorial software, brand systems, and digital products for forward-thinking partners.",
+    "Selected work by Ayro — AI-powered apps, editorial software, and digital products for forward-thinking partners.",
 };
 
 export default function WorkPage() {
   return (
     <>
       <section
-        className="relative overflow-hidden pt-[180px] pb-[14vh]"
+        className="relative overflow-hidden pt-[160px] pb-[12vh]"
         style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
       >
         <div
-          className="cloud-blob"
+          className="pointer-events-none absolute inset-0"
           style={{
-            width: "55vw",
-            height: "55vw",
-            left: "-10vw",
-            top: "0vw",
-            background: "rgba(196,164,132,0.2)",
+            background:
+              "radial-gradient(70% 60% at 80% 0%, rgba(193,255,114,0.22) 0%, rgba(248,246,242,0) 60%)",
           }}
         />
-        <div className="relative max-w-[1400px] mx-auto">
-          <p
-            className="text-xs uppercase tracking-[0.3em] text-taupe mb-6"
-            data-reveal
-          >
-            Index · 2022 — 2025
-          </p>
+        <div className="relative max-w-[1280px] mx-auto">
+          <div className="pill" data-reveal>
+            <span className="dot" />
+            Selected index · 2022 — 2026
+          </div>
           <h1
-            className="font-serif text-charcoal leading-[1.02] max-w-[18ch]"
-            style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)" }}
+            className="display mt-8 text-ink max-w-[20ch]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             data-reveal
           >
             A meandering record of work shipped in confidence.
           </h1>
           <p
-            className="mt-8 max-w-2xl text-[1.0625rem] leading-[1.7] text-taupe"
+            className="mt-7 max-w-[60ch] text-[17px] md:text-[19px] leading-[1.55] text-ink/65"
             data-reveal
             style={{ ["--reveal-delay" as string]: "120ms" }}
           >
             Each of these began the same way — a brief conversation, an
             unusual ambition, and a willingness to treat the product as an
-            artifact rather than a feature list. Scroll slowly.
+            artifact rather than a feature list.
           </p>
+          <div
+            className="mt-10 flex flex-wrap items-center gap-3"
+            data-reveal
+            style={{ ["--reveal-delay" as string]: "220ms" }}
+          >
+            <Link
+              href="/contact"
+              className="btn-lime magnetic inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
+            >
+              Start a Project <span aria-hidden>↗</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -55,13 +63,13 @@ export default function WorkPage() {
         className="pb-[20vh]"
         style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
       >
-        <div className="max-w-[1400px] mx-auto flex flex-col gap-[20vh]">
+        <div className="max-w-[1400px] mx-auto flex flex-col gap-[18vh]">
           {projects.map((p, i) => (
             <div key={p.slug} id={p.slug}>
               <ProjectCard project={p} index={i} />
               <p
                 className={[
-                  "mt-8 max-w-xl text-[0.95rem] leading-[1.7] text-taupe",
+                  "mt-8 max-w-xl text-[15px] leading-[1.7] text-ink/65",
                   p.align === "left" ? "md:ml-0" : "md:ml-[41.666%]",
                 ].join(" ")}
                 data-reveal

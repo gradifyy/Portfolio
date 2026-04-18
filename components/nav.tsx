@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
   { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "Process" },
+  { href: "/#community", label: "Community" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -20,7 +21,7 @@ export default function Nav() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      setScrolled(y > 100);
+      setScrolled(y > 60);
       if (y > lastY.current && y > 200) {
         setHidden(true);
       } else {
@@ -40,49 +41,64 @@ export default function Nav() {
     <>
       <header
         className={[
-          "fixed top-0 left-0 right-0 z-50 h-[80px] flex items-center",
-          "transition-[transform,background-color,backdrop-filter] duration-[400ms] ease-out",
+          "fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center",
+          "transition-[transform,background-color,backdrop-filter,border-color] duration-[400ms] ease-out",
           hidden ? "-translate-y-full" : "translate-y-0",
-          scrolled ? "frosted border-b border-stone/40" : "bg-transparent",
+          scrolled
+            ? "frosted border-b border-line"
+            : "bg-transparent border-b border-transparent",
         ].join(" ")}
         style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
       >
         <div className="flex w-full items-center justify-between">
+          {/* Logo */}
           <Link
             href="/"
-            className="font-serif text-2xl tracking-tight text-charcoal magnetic"
+            className="magnetic flex items-center gap-2 text-[22px] font-bold tracking-tight text-ink"
             aria-label="Ayro — Home"
           >
-            Ayro<span className="text-terracotta">.</span>
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-ink text-[13px] font-bold text-cream">
+              A
+            </span>
+            <span>Ayro</span>
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-limedeep" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-10">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-9">
             {LINKS.map((l) => {
               const active =
                 pathname === l.href ||
-                (l.href !== "/" && pathname.startsWith(l.href));
+                (l.href !== "/" &&
+                  !l.href.startsWith("/#") &&
+                  pathname.startsWith(l.href));
               return (
                 <Link
                   key={l.href}
                   href={l.href}
                   className={[
-                    "magnetic relative text-sm tracking-[0.08em] uppercase",
-                    active ? "text-charcoal" : "text-taupe hover:text-charcoal",
+                    "magnetic relative text-[13.5px] font-medium",
+                    active ? "text-ink" : "text-ink/70 hover:text-ink",
                     "transition-colors duration-300",
                   ].join(" ")}
                 >
                   {l.label}
-                  <span
-                    className={[
-                      "absolute left-0 -bottom-1 h-px bg-terracotta transition-all duration-500",
-                      active ? "w-full" : "w-0 group-hover:w-full",
-                    ].join(" ")}
-                  />
                 </Link>
               );
             })}
           </nav>
 
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="btn-lime magnetic inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold"
+            >
+              Start a Project
+              <span aria-hidden>↗</span>
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
           <button
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
@@ -91,19 +107,19 @@ export default function Nav() {
           >
             <span
               className={[
-                "block h-px w-6 bg-charcoal transition-transform duration-300",
+                "block h-px w-6 bg-ink transition-transform duration-300",
                 menuOpen ? "translate-y-[7px] rotate-45" : "",
               ].join(" ")}
             />
             <span
               className={[
-                "block h-px w-6 bg-charcoal transition-opacity duration-300",
+                "block h-px w-6 bg-ink transition-opacity duration-300",
                 menuOpen ? "opacity-0" : "opacity-100",
               ].join(" ")}
             />
             <span
               className={[
-                "block h-px w-6 bg-charcoal transition-transform duration-300",
+                "block h-px w-6 bg-ink transition-transform duration-300",
                 menuOpen ? "-translate-y-[7px] -rotate-45" : "",
               ].join(" ")}
             />
@@ -111,20 +127,26 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — lime-tinted full-screen */}
       <div
         className={[
           "fixed inset-0 z-40 md:hidden transition-opacity duration-500",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
       >
-        <div className="absolute inset-0 frosted" />
-        <div className="relative h-full flex flex-col items-start justify-center px-[5vw] gap-8">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(120% 80% at 50% 0%, #eaf7d2 0%, #c1ff72 50%, #9ee556 100%)",
+          }}
+        />
+        <div className="relative h-full flex flex-col items-start justify-center px-[6vw] gap-6">
           {LINKS.map((l, i) => (
             <Link
               key={l.href}
               href={l.href}
-              className="font-serif text-5xl text-charcoal"
+              className="display text-ink text-6xl"
               style={{
                 transform: menuOpen ? "translateY(0)" : "translateY(20px)",
                 opacity: menuOpen ? 1 : 0,
@@ -134,6 +156,18 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="btn-ink mt-4 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            style={{
+              transform: menuOpen ? "translateY(0)" : "translateY(20px)",
+              opacity: menuOpen ? 1 : 0,
+              transition: `opacity 0.6s ${LINKS.length * 80}ms cubic-bezier(0.16,1,0.3,1), transform 0.6s ${LINKS.length * 80}ms cubic-bezier(0.16,1,0.3,1)`,
+            }}
+          >
+            Start a Project
+            <span aria-hidden>↗</span>
+          </Link>
         </div>
       </div>
     </>

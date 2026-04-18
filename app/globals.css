@@ -1,28 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  /* Palette */
-  --cream: #f9f7f2;
+  /* New CryptoHub-inspired palette */
+  --cream: #f8f6f2;
+  --cream-soft: #f1efe9;
+  --lime: #c1ff72;
+  --lime-soft: #b9f96e;
+  --lime-deep: #9ee556;
+  --charcoal: #1c1c1c;
+  --charcoal-soft: #242424;
+  --ink: #111111;
+  --line: #ebe8e0;
+
+  /* Legacy aliases kept so pre-existing /work, /about, /contact pages still render */
   --sand: #f0ebe3;
   --stone: #e8e1d5;
   --terracotta: #c4a484;
   --dusty-rose: #d4a5a5;
-  --charcoal: #2a2a2a;
   --taupe: #6b6560;
 
   --background: var(--cream);
-  --foreground: var(--charcoal);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-cream: var(--cream);
+  --color-creamsoft: var(--cream-soft);
+  --color-lime: var(--lime);
+  --color-limesoft: var(--lime-soft);
+  --color-limedeep: var(--lime-deep);
+  --color-charcoal: var(--charcoal);
+  --color-charcoalsoft: var(--charcoal-soft);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
   --color-sand: var(--sand);
   --color-stone: var(--stone);
   --color-terracotta: var(--terracotta);
   --color-dustyrose: var(--dusty-rose);
-  --color-charcoal: var(--charcoal);
   --color-taupe: var(--taupe);
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
@@ -41,7 +57,7 @@ body {
 body {
   font-family: var(--font-sans), "Inter", system-ui, -apple-system, sans-serif;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -54,6 +70,14 @@ body {
 
 .font-sans {
   font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+}
+
+/* Tight display tracking for the big hero headline */
+.display {
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 0.98;
 }
 
 /* Lenis smooth scroll */
@@ -124,9 +148,9 @@ html.lenis body {
 
 /* Frosted glass panel */
 .frosted {
-  background: rgba(249, 247, 242, 0.55);
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  background: rgba(248, 246, 242, 0.72);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
 }
 
 /* Magnetic link pseudo hover */
@@ -137,6 +161,189 @@ html.lenis body {
   transform: translateY(-2px);
 }
 
+/* Lime CTA button */
+.btn-lime {
+  background: var(--lime);
+  color: var(--ink);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 10px 30px -10px rgba(160, 230, 80, 0.35);
+}
+.btn-lime:hover {
+  transform: translateY(-2px);
+  background: var(--lime-soft);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 18px 50px -10px rgba(160, 230, 80, 0.55);
+}
+
+/* Dark pill button */
+.btn-ink {
+  background: var(--ink);
+  color: #fff;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 12px 30px -10px rgba(0, 0, 0, 0.25);
+}
+.btn-ink:hover {
+  transform: translateY(-2px);
+  background: var(--charcoal);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 18px 50px -10px rgba(0, 0, 0, 0.35);
+}
+
+/* Pill badge (lime border, cream fill) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid rgba(158, 229, 86, 0.55);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02), 0 10px 24px -12px rgba(158, 229, 86, 0.25);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--lime-deep);
+  box-shadow: 0 0 0 3px rgba(158, 229, 86, 0.2);
+}
+
+/* Floating app-icon chip */
+.icon-chip {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 30px -10px rgba(0, 0, 0, 0.2),
+    0 2px 6px -2px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+  backdrop-filter: blur(6px);
+}
+.icon-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* Gentle float keyframes — each icon uses a different delay/duration */
+@keyframes floaty {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--tilt, 0deg)); }
+  50%      { transform: translate3d(0, -10px, 0) rotate(calc(var(--tilt, 0deg) + 2deg)); }
+}
+.floaty {
+  animation: floaty var(--float-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* Slow orbit for the hero icon halo */
+@keyframes orbit-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.orbit-slow {
+  animation: orbit-slow 60s linear infinite;
+}
+
+/* Subtle “heartbeat chart” stroke near hero icons */
+.chart-line {
+  stroke: #2a2a2a;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.55;
+}
+
+/* iPhone frame */
+.phone {
+  position: relative;
+  width: 300px;
+  height: 620px;
+  border-radius: 48px;
+  background: #0b0b0b;
+  padding: 10px;
+  box-shadow:
+    0 30px 80px -30px rgba(0, 0, 0, 0.45),
+    0 8px 20px -8px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px #000;
+}
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 30px;
+  background: #000;
+  border-radius: 9999px;
+  z-index: 3;
+}
+.phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+/* Scrolling inner phone content */
+@keyframes phone-scroll {
+  0%   { transform: translateY(0); }
+  45%  { transform: translateY(-50%); }
+  55%  { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+.phone-scroller {
+  animation: phone-scroll 18s ease-in-out infinite;
+}
+
+/* Section → section gradient transitions (cream → lime-tinted → charcoal) */
+.grad-cream-lime {
+  background: linear-gradient(180deg, var(--cream) 0%, #eaf7d2 60%, #d8ef9e 100%);
+}
+.grad-lime-charcoal {
+  background: linear-gradient(180deg, #d8ef9e 0%, #6b7a4c 45%, var(--charcoal) 100%);
+}
+.grad-charcoal-cream {
+  background: linear-gradient(180deg, var(--charcoal) 0%, #3a3a30 35%, var(--cream) 100%);
+}
+
+/* Thin rule used inside dark sections */
+.rule-dim {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  height: 1px;
+}
+
+/* Card inside dark sections */
+.dark-card {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+}
+.cream-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 28px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03), 0 30px 60px -30px rgba(0, 0, 0, 0.12);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
@@ -144,13 +351,16 @@ html.lenis body {
     transform: none !important;
     transition: none !important;
   }
-  .cloud-blob {
-    display: none;
+  .cloud-blob,
+  .floaty,
+  .orbit-slow,
+  .phone-scroller {
+    animation: none !important;
   }
 }
 
 /* Selection */
 ::selection {
-  background: var(--terracotta);
-  color: var(--cream);
+  background: var(--lime);
+  color: var(--ink);
 }
