@@ -72,7 +72,7 @@ export default function FsStory() {
             ["4", "Floors"],
             ["7AM — 2AM", "Daily"],
             ["Thamel", "Kathmandu"],
-            ["4.6★", "491K Reviews"],
+            ["4.5★", "1.1K Reviews"],
           ].map(([value, label], i) => (
             <div
               key={label}
