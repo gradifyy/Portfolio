@@ -5,34 +5,32 @@ type IconDef = {
   bg: string;
   ring?: string;
   svg: ReactNode;
-  /** x/y in % relative to the hero container. Icons live in the outer bands only:
-   *  x ∈ [0, 18] ∪ [82, 100] — so they never sit on top of the headline. */
-  x: number;
-  y: number;
+  /** Offsets in px from the center of the hero container (0, 0 = center).
+   * Icons orbit tightly around the ~460px headline block like the reference. */
+  dx: number;
+  dy: number;
   size?: number;
   tilt?: number;
   floatDuration?: number;
   floatDelay?: number;
-  chart?: "left" | "right" | null;
 };
 
-/* Abstract, recognizable monogram-style app marks — intentionally non-trademarked
- * rounded-square chips that match the reference "orbiting app icons" rhythm. */
+/* Abstract, recognizable monogram-style app marks — non-trademarked chips that
+ * orbit the headline in the same rhythm as the reference video. */
 const ICONS: IconDef[] = [
-  // -------- LEFT BAND --------
+  // Top ring
   {
     label: "Cursor",
     bg: "#ffffff",
-    ring: "rgba(0,0,0,0.06)",
-    x: 4,
-    y: 8,
-    size: 60,
+    ring: "rgba(0,0,0,0.08)",
+    dx: -240,
+    dy: -150,
+    size: 52,
     tilt: -8,
     floatDuration: 6,
     floatDelay: 0,
-    chart: "right",
     svg: (
-      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden>
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
         <path
           d="M6 4 L26 16 L6 28 Z"
           fill="#111"
@@ -44,75 +42,16 @@ const ICONS: IconDef[] = [
     ),
   },
   {
-    label: "Shape",
-    bg: "linear-gradient(135deg,#6a5bff,#8a7dff)",
-    x: 2,
-    y: 42,
-    size: 62,
-    tilt: -10,
-    floatDuration: 7.5,
-    floatDelay: 0.9,
-    chart: null,
-    svg: (
-      <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden>
-        <circle cx="16" cy="16" r="9" fill="#fff" />
-        <circle cx="16" cy="16" r="3.2" fill="#6a5bff" />
-      </svg>
-    ),
-  },
-  {
-    label: "Token",
-    bg: "#ffd84a",
-    x: 9,
-    y: 72,
-    size: 58,
-    tilt: 4,
-    floatDuration: 8,
-    floatDelay: 1.1,
-    chart: null,
-    svg: (
-      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
-        <path d="M16 4 L26 10 L22 22 L10 22 L6 10 Z" fill="#111" />
-      </svg>
-    ),
-  },
-  {
-    label: "Prompt",
-    bg: "#ffffff",
-    ring: "rgba(0,0,0,0.08)",
-    x: 14,
-    y: 26,
-    size: 54,
-    tilt: -4,
-    floatDuration: 6.8,
-    floatDelay: 0.3,
-    chart: null,
-    svg: (
-      <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden>
-        <path
-          d="M7 9 h14 a3 3 0 0 1 3 3 v6 a3 3 0 0 1 -3 3 h-8 l-4 4 v-4 h-2 a3 3 0 0 1 -3 -3 v-6 a3 3 0 0 1 3 -3 z"
-          fill="none"
-          stroke="#111"
-          strokeWidth="1.8"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-
-  // -------- RIGHT BAND --------
-  {
     label: "Figma",
     bg: "linear-gradient(135deg,#ff7262,#a259ff 55%,#1abcfe)",
-    x: 92,
-    y: 6,
-    size: 60,
+    dx: -90,
+    dy: -200,
+    size: 48,
     tilt: 6,
     floatDuration: 7,
     floatDelay: 0.4,
-    chart: null,
     svg: (
-      <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden>
+      <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden>
         <rect x="8" y="3" width="8" height="8" rx="4" fill="#fff" />
         <rect x="8" y="11" width="8" height="8" rx="4" fill="#fff" />
         <rect x="8" y="19" width="8" height="8" rx="4" fill="#fff" />
@@ -125,13 +64,12 @@ const ICONS: IconDef[] = [
     label: "Claude",
     bg: "#f1ecde",
     ring: "rgba(0,0,0,0.08)",
-    x: 84,
-    y: 24,
-    size: 56,
+    dx: 100,
+    dy: -180,
+    size: 50,
     tilt: -3,
     floatDuration: 8,
     floatDelay: 0.9,
-    chart: "left",
     svg: (
       <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
         <path
@@ -147,15 +85,14 @@ const ICONS: IconDef[] = [
   {
     label: "OpenAI",
     bg: "#0c0c0c",
-    x: 96,
-    y: 44,
-    size: 62,
+    dx: 260,
+    dy: -130,
+    size: 52,
     tilt: 4,
     floatDuration: 7,
     floatDelay: 1.3,
-    chart: null,
     svg: (
-      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden>
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
         <g
           stroke="#ffffff"
           strokeWidth="1.8"
@@ -171,16 +108,33 @@ const ICONS: IconDef[] = [
       </svg>
     ),
   },
+
+  // Mid ring (left & right of headline)
+  {
+    label: "Shape",
+    bg: "linear-gradient(135deg,#6a5bff,#8a7dff)",
+    dx: -320,
+    dy: 20,
+    size: 54,
+    tilt: -10,
+    floatDuration: 7.5,
+    floatDelay: 0.9,
+    svg: (
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
+        <circle cx="16" cy="16" r="9" fill="#fff" />
+        <circle cx="16" cy="16" r="3.2" fill="#6a5bff" />
+      </svg>
+    ),
+  },
   {
     label: "Spark",
     bg: "#c1ff72",
-    x: 88,
-    y: 62,
-    size: 58,
+    dx: 320,
+    dy: 0,
+    size: 54,
     tilt: -5,
     floatDuration: 6.5,
     floatDelay: 0.2,
-    chart: "left",
     svg: (
       <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
         <path
@@ -190,19 +144,35 @@ const ICONS: IconDef[] = [
       </svg>
     ),
   },
+
+  // Bottom ring
+  {
+    label: "Token",
+    bg: "#ffd84a",
+    dx: -220,
+    dy: 170,
+    size: 50,
+    tilt: 4,
+    floatDuration: 8,
+    floatDelay: 1.1,
+    svg: (
+      <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden>
+        <path d="M16 4 L26 10 L22 22 L10 22 L6 10 Z" fill="#111" />
+      </svg>
+    ),
+  },
   {
     label: "iOS",
     bg: "#f5f2e9",
     ring: "rgba(0,0,0,0.06)",
-    x: 95,
-    y: 78,
-    size: 56,
+    dx: -80,
+    dy: 220,
+    size: 48,
     tilt: 8,
     floatDuration: 9,
     floatDelay: 0.6,
-    chart: null,
     svg: (
-      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
+      <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden>
         <path
           d="M21 9.5 c-1.8 0-3.1 1.1-3.9 1.1-.9 0-2.3-1-3.8-1-2 0-4.2 1.7-4.2 4.8 0 2 .8 4.2 1.8 5.7.9 1.3 1.7 2.4 2.8 2.4 1 0 1.4-.7 2.7-.7 1.3 0 1.6.7 2.7.7 1.1 0 1.8-1.2 2.6-2.4.6-.8 1-1.6 1.3-2.3-3.3-1.2-3.2-5.9 0-7.1-.7-1-1.7-1.2-2.0-1.2Z M16.8 7.8 c.4-.5.7-1.2.6-1.9-.6 0-1.3.4-1.7.9-.4.4-.7 1.1-.6 1.8.7.1 1.4-.3 1.7-.8Z"
           fill="#111"
@@ -213,15 +183,14 @@ const ICONS: IconDef[] = [
   {
     label: "Chat",
     bg: "linear-gradient(135deg,#26cfaf,#0e6e63)",
-    x: 6,
-    y: 88,
-    size: 54,
+    dx: 120,
+    dy: 210,
+    size: 48,
     tilt: 9,
     floatDuration: 7.2,
     floatDelay: 1.5,
-    chart: null,
     svg: (
-      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
+      <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden>
         <path
           d="M6 22 V10 a3 3 0 0 1 3 -3 h14 a3 3 0 0 1 3 3 v8 a3 3 0 0 1 -3 3 h-11 l-6 4 z"
           fill="#fff"
@@ -229,32 +198,29 @@ const ICONS: IconDef[] = [
       </svg>
     ),
   },
+  {
+    label: "Prompt",
+    bg: "#ffffff",
+    ring: "rgba(0,0,0,0.08)",
+    dx: 260,
+    dy: 170,
+    size: 50,
+    tilt: -4,
+    floatDuration: 6.8,
+    floatDelay: 0.3,
+    svg: (
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden>
+        <path
+          d="M7 9 h14 a3 3 0 0 1 3 3 v6 a3 3 0 0 1 -3 3 h-8 l-4 4 v-4 h-2 a3 3 0 0 1 -3 -3 v-6 a3 3 0 0 1 3 -3 z"
+          fill="none"
+          stroke="#111"
+          strokeWidth="1.8"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
 ];
-
-const Chart = ({ side, size }: { side: "left" | "right"; size: number }) => (
-  <svg
-    viewBox="0 0 90 30"
-    width="90"
-    height="30"
-    aria-hidden
-    className={[
-      "absolute top-1/2 -translate-y-1/2 pointer-events-none",
-      side === "right" ? `left-[${size + 8}px]` : `right-[${size + 8}px]`,
-    ].join(" ")}
-    style={{
-      [side === "right" ? "left" : "right"]: `${size + 8}px`,
-    } as React.CSSProperties}
-  >
-    <path
-      className="chart-line"
-      d={
-        side === "right"
-          ? "M2 18 L14 18 L20 10 L28 22 L38 8 L48 20 L58 14 L68 18 L88 18"
-          : "M88 18 L76 18 L70 10 L62 22 L52 8 L42 20 L32 14 L22 18 L2 18"
-      }
-    />
-  </svg>
-);
 
 export default function FloatingIcons() {
   return (
@@ -263,17 +229,15 @@ export default function FloatingIcons() {
       aria-hidden
     >
       {ICONS.map((ic, i) => {
-        const size = ic.size ?? 56;
+        const size = ic.size ?? 48;
         return (
           <div
             key={i}
-            className="absolute"
+            className="absolute left-1/2 top-1/2"
             style={{
-              left: `${ic.x}%`,
-              top: `${ic.y}%`,
               width: size,
               height: size,
-              transform: "translate(-50%, -50%)",
+              transform: `translate(calc(-50% + ${ic.dx}px), calc(-50% + ${ic.dy}px))`,
             }}
           >
             <div
@@ -284,8 +248,8 @@ export default function FloatingIcons() {
                   height: size,
                   background: ic.bg,
                   boxShadow: ic.ring
-                    ? `0 0 0 1px ${ic.ring}, 0 1px 0 rgba(255,255,255,0.7) inset, 0 22px 48px -18px rgba(0,0,0,0.28), 0 4px 10px -4px rgba(0,0,0,0.10)`
-                    : `0 1px 0 rgba(255,255,255,0.7) inset, 0 22px 48px -18px rgba(0,0,0,0.28), 0 4px 10px -4px rgba(0,0,0,0.10)`,
+                    ? `0 0 0 1px ${ic.ring}, 0 1px 0 rgba(255,255,255,0.7) inset, 0 18px 40px -16px rgba(0,0,0,0.22), 0 3px 8px -3px rgba(0,0,0,0.08)`
+                    : `0 1px 0 rgba(255,255,255,0.7) inset, 0 18px 40px -16px rgba(0,0,0,0.22), 0 3px 8px -3px rgba(0,0,0,0.08)`,
                   ["--tilt" as string]: `${ic.tilt ?? 0}deg`,
                   ["--float-duration" as string]: `${ic.floatDuration ?? 7}s`,
                   ["--float-delay" as string]: `${ic.floatDelay ?? 0}s`,
@@ -295,7 +259,6 @@ export default function FloatingIcons() {
             >
               {ic.svg}
             </div>
-            {ic.chart ? <Chart side={ic.chart} size={size} /> : null}
           </div>
         );
       })}

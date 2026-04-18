@@ -79,48 +79,27 @@ export default function Home() {
   return (
     <>
       {/* =========================================================
-          HERO — cream, floating icons, phone mockup
+          HERO — cream, floating icons orbit the headline, phone peeks up
          ========================================================= */}
       <section
-        className="relative overflow-hidden pt-[120px] pb-[140px]"
-        style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
+        className="relative overflow-hidden pt-[110px] pb-0"
+        style={{ paddingLeft: "4vw", paddingRight: "4vw" }}
       >
         {/* Soft radial wash */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(70% 60% at 50% 20%, rgba(193,255,114,0.18) 0%, rgba(248,246,242,0) 60%)",
-          }}
-        />
-        <div
-          className="cloud-blob"
-          style={{
-            width: "60vw",
-            height: "60vw",
-            left: "-15vw",
-            top: "-10vw",
-            background: "rgba(193,255,114,0.18)",
-          }}
-        />
-        <div
-          className="cloud-blob"
-          style={{
-            width: "50vw",
-            height: "50vw",
-            right: "-20vw",
-            top: "10vw",
-            background: "rgba(17,17,17,0.05)",
+              "radial-gradient(50% 55% at 50% 30%, rgba(193,255,114,0.14) 0%, rgba(248,246,242,0) 65%)",
           }}
         />
 
-        <div className="relative mx-auto max-w-[1360px]">
-          {/* Floating icons + headline — icons live in the outer bands only */}
-          <div className="relative min-h-[640px] md:min-h-[680px]">
+        <div className="relative mx-auto max-w-[1180px]">
+          {/* Orbit area — headline sits at dead center, icons use px offsets around it */}
+          <div className="relative mx-auto" style={{ height: 560 }}>
             <FloatingIcons />
 
-            {/* Center column reserved for the headline — icons stay out of this box */}
-            <div className="relative z-10 mx-auto flex max-w-[900px] flex-col items-center text-center pt-4 md:pt-8 px-4">
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
               <div data-reveal>
                 <div className="pill">
                   <span className="dot" />
@@ -129,78 +108,71 @@ export default function Home() {
               </div>
 
               <h1
-                className="display mt-8 md:mt-10 text-ink tracking-[-0.035em]"
+                className="display mt-5 text-ink"
                 style={{
-                  fontSize: "clamp(2.75rem, 7.2vw, 6.25rem)",
-                  lineHeight: 0.98,
+                  fontSize: "clamp(2.1rem, 4.6vw, 3.75rem)",
+                  lineHeight: 1.02,
+                  letterSpacing: "-0.035em",
+                  maxWidth: "16ch",
                 }}
                 data-reveal
               >
-                <span className="block">Get Premium</span>
-                <span className="block">
-                  <span className="relative inline-block whitespace-nowrap">
-                    <span className="relative z-10">Digital</span>
-                    <span
-                      aria-hidden
-                      className="absolute left-[-0.04em] right-[-0.04em] bottom-[0.1em] h-[0.22em] rounded-full bg-lime"
-                      style={{ zIndex: 0 }}
-                    />
-                  </span>{" "}
-                  Experiences
+                <span className="block">Get Premium Digital</span>
+                <span className="block">Experiences From</span>
+                <span className="block relative inline-block">
+                  <span className="relative z-10">AI-Powered Design</span>
                 </span>
-                <span className="block">From AI-Powered Design</span>
               </h1>
 
-              <p
-                className="mt-7 md:mt-8 max-w-[600px] text-[17px] md:text-[20px] leading-[1.55] text-ink/70"
-                data-reveal
-                style={{ ["--reveal-delay" as string]: "120ms" }}
-              >
-                Ayro crafts strategic apps and digital experiences using
-                Cursor, Figma, Claude &amp; OpenAI.
-              </p>
-
               <div
-                className="mt-9 flex flex-wrap items-center justify-center gap-3"
+                className="mt-7"
                 data-reveal
-                style={{ ["--reveal-delay" as string]: "220ms" }}
+                style={{ ["--reveal-delay" as string]: "160ms" }}
               >
                 <Link
                   href="/contact"
-                  className="btn-ink magnetic inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold"
+                  className="btn-ink magnetic inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
                 >
                   Start a Project
                   <span aria-hidden>↗</span>
-                </Link>
-                <Link
-                  href="/work"
-                  className="magnetic inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/70 px-6 py-3.5 text-sm font-semibold text-ink backdrop-blur hover:bg-white transition-colors"
-                >
-                  See the work
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Phone mockup hovering below headline — fully in-frame */}
+          {/* Phone mockup peeks up from the bottom of the hero,
+              with its lower half bleeding into the next section */}
           <div
-            className="relative z-10 mt-6 md:mt-10 flex justify-center"
+            className="relative z-10 flex justify-center"
             data-reveal
-            style={{ ["--reveal-delay" as string]: "340ms" }}
+            style={{
+              ["--reveal-delay" as string]: "300ms",
+              marginTop: "-80px",
+              marginBottom: "-220px",
+            }}
           >
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -inset-12 rounded-[60px]"
+                className="absolute -inset-10 rounded-[60px]"
                 style={{
                   background:
-                    "radial-gradient(50% 50% at 50% 40%, rgba(193,255,114,0.38) 0%, rgba(248,246,242,0) 70%)",
+                    "radial-gradient(50% 50% at 50% 40%, rgba(193,255,114,0.32) 0%, rgba(248,246,242,0) 70%)",
                   filter: "blur(10px)",
                 }}
               />
               <PhoneMockup />
             </div>
           </div>
+
+          {/* Subheadline below phone */}
+          <p
+            className="relative z-10 mx-auto mt-[260px] max-w-[560px] text-center text-[16px] md:text-[18px] leading-[1.55] text-ink/65"
+            data-reveal
+          >
+            Ayro crafts strategic apps and digital experiences using Cursor,
+            Figma, Claude &amp; OpenAI.
+          </p>
         </div>
       </section>
 
