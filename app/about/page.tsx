@@ -11,30 +11,25 @@ export default function AboutPage() {
   return (
     <>
       <section
-        className="relative overflow-hidden pt-[180px] pb-[12vh]"
+        className="relative overflow-hidden pt-[160px] pb-[12vh]"
         style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
       >
         <div
-          className="cloud-blob"
+          className="pointer-events-none absolute inset-0"
           style={{
-            width: "50vw",
-            height: "50vw",
-            right: "-12vw",
-            top: "-5vw",
-            background: "rgba(212,165,165,0.22)",
+            background:
+              "radial-gradient(70% 60% at 80% 0%, rgba(193,255,114,0.2) 0%, rgba(248,246,242,0) 60%)",
           }}
         />
-        <div className="relative max-w-[1400px] mx-auto grid grid-cols-12 gap-8 items-end">
+        <div className="relative max-w-[1280px] mx-auto grid grid-cols-12 gap-8 items-end">
           <div className="col-span-12 md:col-span-7">
-            <p
-              className="text-xs uppercase tracking-[0.3em] text-taupe mb-6"
-              data-reveal
-            >
+            <div className="pill" data-reveal>
+              <span className="dot" />
               The approach
-            </p>
+            </div>
             <h1
-              className="font-serif text-charcoal leading-[1.02] max-w-[20ch]"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)" }}
+              className="display mt-8 text-ink leading-[1.02] max-w-[20ch]"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
               data-reveal
             >
               A quiet practice for products that outlast their launch.
@@ -64,7 +59,7 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-8 md:col-start-3 space-y-10">
             <p
-              className="font-serif text-[1.75rem] md:text-[2rem] leading-[1.25] text-charcoal"
+              className="display text-[1.75rem] md:text-[2.2rem] leading-[1.2] text-ink"
               data-reveal
             >
               I work at the quiet edge of product and editorial — a studio of
@@ -72,7 +67,7 @@ export default function AboutPage() {
             </p>
 
             <div
-              className="text-[1.0625rem] leading-[1.75] text-taupe space-y-5"
+              className="text-[1.0625rem] leading-[1.75] text-ink/70 space-y-5"
               data-reveal
               style={{ ["--reveal-delay" as string]: "100ms" }}
             >
@@ -112,7 +107,7 @@ export default function AboutPage() {
             Capabilities
           </p>
           <h2
-            className="font-serif text-charcoal leading-[1.05] max-w-[18ch] mb-[8vh]"
+            className="display text-ink leading-[1.05] max-w-[18ch] mb-[8vh]"
             style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             data-reveal
           >
@@ -154,13 +149,13 @@ export default function AboutPage() {
                 data-reveal
                 style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               >
-                <h3 className="font-serif text-2xl text-charcoal mb-5">
+                <h3 className="display text-[1.5rem] text-ink mb-5">
                   {group.heading}
                 </h3>
-                <ul className="space-y-2 text-sm text-taupe">
+                <ul className="space-y-2 text-sm text-ink/70">
                   {group.items.map((it) => (
                     <li key={it} className="flex gap-3">
-                      <span className="text-terracotta" aria-hidden>
+                      <span className="text-limedeep" aria-hidden>
                         —
                       </span>
                       <span>{it}</span>
@@ -185,7 +180,7 @@ export default function AboutPage() {
             Process
           </p>
           <h2
-            className="font-serif text-charcoal leading-[1.05] max-w-[20ch] mb-[8vh]"
+            className="display text-ink leading-[1.05] max-w-[20ch] mb-[8vh]"
             style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             data-reveal
           >
@@ -226,14 +221,14 @@ export default function AboutPage() {
                 style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               >
                 <div className="flex items-baseline gap-5">
-                  <span className="font-serif text-2xl text-terracotta">
+                  <span className="display text-[1.5rem] text-limedeep">
                     {m.step}
                   </span>
-                  <h3 className="font-serif text-2xl text-charcoal">
+                  <h3 className="display text-[1.5rem] text-ink">
                     {m.title}
                   </h3>
                 </div>
-                <p className="mt-3 text-[1rem] leading-[1.7] text-taupe max-w-md">
+                <p className="mt-3 text-[1rem] leading-[1.7] text-ink/70 max-w-md">
                   {m.body}
                 </p>
               </li>

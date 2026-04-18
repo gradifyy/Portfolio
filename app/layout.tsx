@@ -17,18 +17,18 @@ const serif = DM_Serif_Display({
 const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ayro — Digital Experiences Shaped by Intention",
+  title: "Ayro — Premium Digital Experiences From AI-Powered Design",
   description:
-    "Ayro is an app developer and designer crafting strategy-led digital experiences for forward-thinking brands.",
+    "Ayro crafts strategic apps and digital experiences using Cursor, Figma, Claude & OpenAI.",
   openGraph: {
-    title: "Ayro — Digital Experiences Shaped by Intention",
+    title: "Ayro — Premium Digital Experiences From AI-Powered Design",
     description:
-      "Strategy-led development for forward-thinking brands.",
+      "Ayro crafts strategic apps and digital experiences using Cursor, Figma, Claude & OpenAI.",
     type: "website",
   },
 };
@@ -43,7 +43,7 @@ export default function RootLayout({
       lang="en"
       className={`${serif.variable} ${sans.variable} antialiased`}
     >
-      <body className="min-h-screen bg-cream text-charcoal">
+      <body className="min-h-screen bg-cream text-ink">
         <LenisProvider>
           <RevealObserver />
           <Nav />
