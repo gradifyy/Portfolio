@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/nav";
 import LenisProvider from "@/components/lenis-provider";
 import RevealObserver from "@/components/reveal-observer";
-import PageTransition from "@/components/page-transition";
 import Footer from "@/components/footer";
 
-const serif = DM_Serif_Display({
+const serif = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ayro — Digital Experiences Shaped by Intention",
+  title: "Lavie Garden | A Green Hug from Nature — Best Restaurant in Kathmandu",
   description:
-    "Ayro is an app developer and designer crafting strategy-led digital experiences for forward-thinking brands.",
+    "Lavie Garden is the most celebrated restaurant in Kathmandu, offering fresh air, an open garden, flavorful delicacies, boutique accommodation, and soul-soothing live music near Boudha Stupa.",
   openGraph: {
-    title: "Ayro — Digital Experiences Shaped by Intention",
+    title: "Lavie Garden | A Green Hug from Nature",
     description:
-      "Strategy-led development for forward-thinking brands.",
+      "The most celebrated restaurant in Kathmandu — fresh air, open garden, flavorful delicacies & boutique stay.",
     type: "website",
   },
 };
@@ -47,9 +46,7 @@ export default function RootLayout({
         <LenisProvider>
           <RevealObserver />
           <Nav />
-          <PageTransition>
-            <main className="relative">{children}</main>
-          </PageTransition>
+          <main className="relative">{children}</main>
           <Footer />
         </LenisProvider>
       </body>
