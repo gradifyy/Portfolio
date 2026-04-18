@@ -154,3 +154,184 @@ html.lenis body {
   background: var(--terracotta);
   color: var(--cream);
 }
+
+/* ═══════════════════════════════════════════════════════
+   4Stories Restaurant — Dark luxury theme
+   ═══════════════════════════════════════════════════════ */
+
+body.page-4stories {
+  background: #0c0b09 !important;
+  color: #f0ece4 !important;
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+}
+
+body.page-4stories > header,
+body.page-4stories > footer {
+  display: none !important;
+}
+
+body.page-4stories ::selection {
+  background: #c8a97e;
+  color: #0c0b09;
+}
+
+/* 4stories palette as CSS vars */
+.fs-root {
+  --fs-bg: #0c0b09;
+  --fs-surface: #161412;
+  --fs-surface-2: #1f1c18;
+  --fs-cream: #f0ece4;
+  --fs-muted: #8a8078;
+  --fs-gold: #c8a97e;
+  --fs-gold-dim: rgba(200, 169, 126, 0.12);
+  --fs-border: rgba(200, 169, 126, 0.15);
+}
+
+/* 4stories reveal animations */
+.fs-root [data-fs-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--fs-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.fs-root [data-fs-reveal].fs-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Horizontal reveal */
+.fs-root [data-fs-reveal-x] {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--fs-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.fs-root [data-fs-reveal-x].fs-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 4stories image parallax wrapper */
+.fs-parallax-wrap {
+  overflow: hidden;
+  will-change: transform;
+}
+
+.fs-parallax-img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* 4stories frosted nav */
+.fs-nav-frosted {
+  background: rgba(12, 11, 9, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border-bottom: 1px solid var(--fs-border);
+}
+
+/* 4stories golden divider */
+.fs-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--fs-gold) 50%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* 4stories hover image zoom */
+.fs-img-hover {
+  overflow: hidden;
+}
+
+.fs-img-hover img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fs-img-hover:hover img {
+  transform: scale(1.05);
+}
+
+/* 4stories text gradient */
+.fs-text-gradient {
+  background: linear-gradient(135deg, var(--fs-cream) 0%, var(--fs-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 4stories button */
+.fs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--fs-gold);
+  color: var(--fs-gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fs-btn:hover {
+  background: var(--fs-gold);
+  color: var(--fs-bg);
+  transform: translateY(-2px);
+}
+
+/* 4stories marquee */
+@keyframes fs-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.fs-marquee {
+  animation: fs-marquee 30s linear infinite;
+}
+
+/* 4stories grain overlay */
+.fs-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Reduced motion for 4stories */
+@media (prefers-reduced-motion: reduce) {
+  .fs-root [data-fs-reveal],
+  .fs-root [data-fs-reveal-x] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .fs-marquee {
+    animation: none;
+  }
+  .fs-parallax-img {
+    transition: none !important;
+  }
+}
