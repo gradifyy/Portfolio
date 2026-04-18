@@ -67,13 +67,17 @@ export default function Footer() {
                 Eat
               </p>
               <ul className="flex flex-col gap-3">
-                {["Menu", "Food & Drinks", "Book a Table"].map((item) => (
-                  <li key={item}>
+                {[
+                  { label: "Menu", href: "#menu" },
+                  { label: "Food & Drinks", href: "#menu" },
+                  { label: "Book a Table", href: "#contact" },
+                ].map((item) => (
+                  <li key={item.label}>
                     <a
-                      href="#menu"
+                      href={item.href}
                       className="magnetic text-sm text-white/60 hover:text-gold transition-colors duration-300"
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}

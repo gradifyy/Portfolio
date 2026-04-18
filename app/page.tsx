@@ -22,7 +22,7 @@ const MENU_ITEMS = [
   },
   {
     name: "Dudh Malai Cake",
-    desc: "Overnight spice-marinated juicy chicken, cooked to perfection in a tandoor and tossed in a homemade tangy spice mix, served on buckwheat pancake.",
+    desc: "A rich, creamy milk-based dessert cake soaked in sweetened condensed milk, topped with delicate cream and garnished with pistachios.",
     img: `${IMG}/wp-content/uploads/2024/04/LNSY8060-scaled.jpg.bv.webp?bv_host=garden.laviehospitality.com.np`,
   },
   {
