@@ -114,36 +114,45 @@ export default function Home() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1280px]">
-          {/* Floating icons — absolute over hero */}
-          <div className="relative h-[520px] md:h-[520px]">
+        <div className="relative mx-auto max-w-[1360px]">
+          {/* Floating icons + headline — icons live in the outer bands only */}
+          <div className="relative min-h-[640px] md:min-h-[680px]">
             <FloatingIcons />
 
-            <div className="relative z-10 flex flex-col items-center text-center pt-6">
-              <div className="pill" data-reveal>
-                <span className="dot" />
-                Special launch offer for early visionaries
+            {/* Center column reserved for the headline — icons stay out of this box */}
+            <div className="relative z-10 mx-auto flex max-w-[900px] flex-col items-center text-center pt-4 md:pt-8 px-4">
+              <div data-reveal>
+                <div className="pill">
+                  <span className="dot" />
+                  Special launch offer for early visionaries
+                </div>
               </div>
 
               <h1
-                className="display mt-8 max-w-[18ch] text-ink"
-                style={{ fontSize: "clamp(2.5rem, 6.4vw, 5.6rem)" }}
+                className="display mt-8 md:mt-10 text-ink tracking-[-0.035em]"
+                style={{
+                  fontSize: "clamp(2.75rem, 7.2vw, 6.25rem)",
+                  lineHeight: 0.98,
+                }}
                 data-reveal
               >
-                Get Premium{" "}
-                <span className="relative whitespace-nowrap">
-                  Digital
-                  <span
-                    aria-hidden
-                    className="absolute -bottom-1 left-0 h-[8px] w-full rounded-full bg-lime"
-                    style={{ zIndex: -1, transform: "translateY(6px)" }}
-                  />
-                </span>{" "}
-                Experiences From AI-Powered Design
+                <span className="block">Get Premium</span>
+                <span className="block">
+                  <span className="relative inline-block whitespace-nowrap">
+                    <span className="relative z-10">Digital</span>
+                    <span
+                      aria-hidden
+                      className="absolute left-[-0.04em] right-[-0.04em] bottom-[0.1em] h-[0.22em] rounded-full bg-lime"
+                      style={{ zIndex: 0 }}
+                    />
+                  </span>{" "}
+                  Experiences
+                </span>
+                <span className="block">From AI-Powered Design</span>
               </h1>
 
               <p
-                className="mt-7 max-w-[560px] text-[17px] md:text-[19px] leading-[1.55] text-ink/70"
+                className="mt-7 md:mt-8 max-w-[600px] text-[17px] md:text-[20px] leading-[1.55] text-ink/70"
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "120ms" }}
               >
@@ -173,19 +182,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Phone mockup hovering below headline */}
+          {/* Phone mockup hovering below headline — fully in-frame */}
           <div
-            className="relative z-10 -mt-2 flex justify-center"
+            className="relative z-10 mt-6 md:mt-10 flex justify-center"
             data-reveal
             style={{ ["--reveal-delay" as string]: "340ms" }}
           >
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -inset-10 rounded-[60px]"
+                className="absolute -inset-12 rounded-[60px]"
                 style={{
                   background:
-                    "radial-gradient(50% 50% at 50% 40%, rgba(193,255,114,0.35) 0%, rgba(248,246,242,0) 70%)",
+                    "radial-gradient(50% 50% at 50% 40%, rgba(193,255,114,0.38) 0%, rgba(248,246,242,0) 70%)",
                   filter: "blur(10px)",
                 }}
               />
